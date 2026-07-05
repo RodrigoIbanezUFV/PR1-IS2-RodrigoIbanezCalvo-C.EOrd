@@ -126,6 +126,9 @@ STATICFILES_DIRS = [
     BASE_DIR / 'relecloud' / 'static',
 ]
 
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
+CRISPY_TEMPLATE_PACK = "bootstrap4"
+
 CSRF_TRUSTED_ORIGINS = [
     "https://rodrigoibanezcloud-brfmgaatdjb3grbt.spaincentral-01.azurewebsites.net"
 ]
