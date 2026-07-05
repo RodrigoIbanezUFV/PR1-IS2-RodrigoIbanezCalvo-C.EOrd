@@ -73,16 +73,26 @@ TEMPLATES = [
 WSGI_APPLICATION = "project.wsgi.application"
 
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER': 'admin1',
-        'PASSWORD': os.environ.get('DB_PASSWORD_ROD', ''),
-        'HOST': 'rodrigobda.postgres.database.azure.com',
-        'PORT': '5432',
+if os.environ.get('WEBSITE_HOSTNAME'):
+    # Se está ejecutando en Azure -> Postgres
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'postgres',
+            'USER': 'admin1',
+            'PASSWORD': os.environ.get('DB_PASSWORD_ROD', ''),
+            'HOST': 'rodrigobda.postgres.database.azure.com',
+            'PORT': '5432',
+        }
     }
-}
+else:
+    # Desarrollo local -> SQLite
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 
 # Password validation
