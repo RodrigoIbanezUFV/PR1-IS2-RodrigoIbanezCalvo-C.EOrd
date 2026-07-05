@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "relecloud.apps.RelecloudConfig",
+    "crispy_forms",
 ]
 
 MIDDLEWARE = [
